@@ -1,0 +1,13 @@
+.collapsible {
+	width:100%;
+}
+
+.top {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+h3, p {
+	margin: 0px;
+}
+

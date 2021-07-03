@@ -1,0 +1,68 @@
+<h2>{{editingCharacter.name}}</h2>
+
+<div>
+	<div class="char-form">
+		<div *ngIf="editing" class="form-box">
+			<h4 style="display:inline-block">Name:</h4>
+			<input type="text" placeholder="Character Name" class="char-name-edit"
+							name="charName" [(ngModel)]="editingCharacter.name">
+		</div>
+		
+		<div class="form-box">
+			<h4 *ngIf="editing">Description:</h4>
+			<p *ngIf="!editing">{{editingCharacter.description}}</p>
+			<textarea *ngIf="editing" type="text" placeholder="Description"
+								class="desc-edit" name="charDesc"
+								[(ngModel)]="editingCharacter.description"></textarea>
+		</div>
+		
+		<div class="form-box">
+			<div>
+				<h4 style="display:inline-block">First Appearance:</h4>
+				<p *ngIf="!editing" style="display:inline-block">{{editingCharacter.start}}</p>
+				<input *ngIf="editing" type="number" placeholder="First Appearance"
+								class="char-start-edit" name="charStart"
+								[(ngModel)]="editingCharacter.start">
+			</div>
+			
+			<div>
+				<h4 style="display:inline-block">Last Appearance:</h4>
+				<p *ngIf="!editing" style="display:inline-block">{{editingCharacter.end}}</p>
+				<input *ngIf="editing" type="number" placeholder="Last Appearance"
+								class="char-end-edit" name="charEnd"
+								[(ngModel)]="editingCharacter.end">
+			</div>
+		</div>
+		
+		<div *ngIf="editingCharacter.attributes.length > 0" class="form-box">
+			<div class="attribute-form" *ngFor="let a of editingCharacter.attributes">
+				<app-collapsible [name]="a.name">
+					<app-attribute-form
+							[attribute]="a"
+							[timeline]="this.timeline"
+							[editing]="editing"
+							[depth]="1"
+							(editEvent)="continueOnClickEvent($event)"
+							(selectEventAdd)="continueAddEvent($event);"
+							(selectEventRemove)="continueRemoveEvent($event)"
+							(deleteAttribute)="deleteAttribute($event)"
+					></app-attribute-form>
+				</app-collapsible>
+			</div>
+		</div>
+		
+		<div *ngIf="editing" class="form-box">
+			<button type="button" (click)="addAttribute()" class="form-button">Add Attribute</button>
+		</div>
+		
+		<div class="form-box">
+			<button type="button" (click)="closeForm()" class="form-button footer left">Close</button>
+			<button type="button" (click)="toggleEditing()" class="form-button footer right">
+				{{editing ? 'Save' : 'Edit'}}
+			</button>
+			<button *ngIf="editing" type="button" (click)="deleteEntry()" class="form-button footer right">
+				Delete
+			</button>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,74 @@
+<div>
+	<div *ngIf="editing">
+		<button type="button" (click)="deleteThisAttribute()">Delete This Attribute</button>
+	</div>
+	<app-collapsible>
+		<div *ngIf="editing" class="form-box">
+			<h4 style="display:inline-block">Name:</h4>
+			<input type="text" placeholder="Character Name" class="attr-name-edit"
+							name="charName" [(ngModel)]="attribute.name">
+		</div>
+	
+		<div class="form-box">
+			<h4 *ngIf="editing">Description:</h4>
+			<p *ngIf="!editing">{{attribute.description}}</p>
+			<textarea *ngIf="editing" type="text" placeholder="Description"
+								class="desc-edit"name="attrDesc"
+								[(ngModel)]="attribute.description"></textarea>
+		</div>
+		
+		<div class="form-box">
+			<div>
+				<h4 style="display:inline-block">First Appearance:</h4>
+				<p *ngIf="!editing" style="display:inline-block">{{attribute.start}}</p>
+				<input *ngIf="editing" type="number" placeholder="First Appearance"
+								class="attr-start-edit" name="attrStart"
+								[(ngModel)]="attribute.start">
+			</div>
+			
+			<div>
+				<h4 style="display:inline-block">Last Appearance:</h4>
+				<p *ngIf="!editing" style="display:inline-block">{{attribute.end}}</p>
+				<input *ngIf="editing" type="number" placeholder="Last Appearance"
+								class="attr-end-edit" name="attrEnd"
+								[(ngModel)]="attribute.end">
+			</div>
+		</div>
+		
+		<app-collapsible [name]="'Events this Attribute Appears In:'" class="form-box">
+			<div class="row">
+				<div class="col" *ngFor="let event of attribute.events">
+					<app-event [storyEvent]="getEvent(event)" (edit)="onClickEvent($event)"></app-event>
+				</div>
+				<div class="col" *ngIf="editing">
+					<button class="form-button flex-button" type="button" (click)="addEvent()">Add Event</button>
+				</div>
+				<div class="col" *ngIf="editing">
+					<button class="form-button flex-button" type="button" (click)="removeEvent()">Remove Event</button>
+				</div>
+			</div>
+		</app-collapsible>
+	</app-collapsible>
+	
+	<div *ngIf="attribute.attributes.length > 0" [style.marginLeft.px]="depth*30" class="form-box">
+		<div class="attribute-form" *ngFor="let a of attribute.attributes">
+			<app-collapsible [name]="a.name">
+				<app-attribute-form
+							[attribute]="a"
+							[timeline]="this.timeline"
+							[editing]="editing"
+							[depth]="depth+1"
+							(editEvent)="continueOnClickEvent($event)"
+							(selectEventAdd)="continueAddEvent($event);"
+							(selectEventRemove)="continueRemoveEvent($event)"
+							(deleteAttribute)="deleteChildAttribute($event)">
+				</app-attribute-form>
+			</app-collapsible>
+		</div>
+	</div>
+	
+	<div *ngIf="editing" [style.marginLeft.px]="depth*30" class="form-box">
+		<button class="form-button" type="button" (click)="addAttribute()">Add Attribute</button>
+	</div>
+	
+</div>

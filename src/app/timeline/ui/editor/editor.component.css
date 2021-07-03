@@ -1,0 +1,98 @@
+.main-window {
+	display: flex;
+}
+
+.dark-tint {
+	width: 100%;
+	height: 100%;
+	background-color: rgba(100,100,100,.4);
+	position: fixed;
+	top: 0;
+	z-index: 5;
+}
+
+.view-window, .editor, .timeline {
+	box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+.view-window {
+	flex: 1;
+	padding: 5px 5px;
+	margin: 5px 5px;
+	overflow: auto;
+	border: 1px solid black;
+	background-color: #6b7b85;
+}
+
+.edit-window {
+	flex: 2;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.editor {
+	flex: 4;
+	max-height: 70vh;
+	max-width: 55vw;
+	overflow: auto;
+	padding: 20px 20px;
+	margin: 5px 5px;
+	border: 1px solid black;
+	background-color: white;
+}
+
+.timeline {
+	flex: 1;
+	padding: 5px 5px;
+	margin: 5px 5px;
+	border: 1px solid black;
+	max-width: 55vw;
+	overflow: auto;
+	background-color: white;
+}
+
+.edit-form {
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+}
+
+.tab-selector {
+	flex: 1;
+	flex-grow: 0;
+	box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.form-tab {
+	display: inline-block;
+}
+
+.edit-pane {
+	flex: 10;
+}
+
+.edit-content {
+	height: 90%;
+}
+
+@media screen and (max-width: 600px) {
+	/*Also see rule on timeline.component*/
+	.view-window {
+		order: 2;
+		min-height: 250px;
+	}
+	.edit-window {
+		order: 1;
+		min-height: 500px;
+	}
+	.main-window {
+		flex-direction: column;
+	}
+	.editor {
+		max-width: 100%;
+	}
+	.timeline {
+		max-width: 100%;
+	}
+}

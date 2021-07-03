@@ -1,0 +1,47 @@
+<div class="content">
+	<img [src]="'/assets/comics/' + comic.selector + '/chapter-1/1-1.jpg'" />
+	<div class="content-text">
+		<div class="name">
+			<h3>{{comic.name}}</h3>
+			<h3 class="japanese">{{comic.nameJap}}</h3>
+		</div>
+		<div class="author">
+			<h4>{{comic.author}}</h4>
+			<h4 class="japanese">{{comic.authorJap}}</h4>
+		</div>
+		<div class="large-pane">
+			<div class="info-pane">
+				<p class="description">{{comic.descriptionLong}}</p>
+			</div>
+			<div class="chapter-info">
+				<div class="citation">
+					<a [href]="'https://' + comic.twitterSrc"
+						target="_blank" rel="noopener noreferrer">
+							Author's Twitter
+					</a>
+					<p>{{comic.updatedDate}}</p>
+				</div>
+				<div class="chapter-list">
+					<h4 style="padding-left:15px">Chapters</h4>
+					<ul class="chapters">
+						<div *ngIf="chapNums.length == 1">
+							<li>
+								<a [href]="'/comics/' + comic.selector + '/1'">
+									Read Here!
+								</a>
+							</li>
+						</div>
+						<div *ngIf="chapNums.length > 1">
+							<li *ngFor="let i of chapNums">
+								<a [href]="'/comics/' + comic.selector + '/' + i">
+									Chapter {{i}}
+								</a>
+							</li>
+							<li *ngIf="comic.ongoing">More Coming Soon!</li>
+						</div>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

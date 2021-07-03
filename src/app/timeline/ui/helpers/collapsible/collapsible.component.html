@@ -1,0 +1,15 @@
+<table class="collapsible">
+	<tr>
+		<div [style.display]="isOpen ? 'block' : 'none'">
+			<td><p *ngIf="!name" class="top">Hide Details</p></td>
+			<td><button type="button" class="top" (click)="collapse($event);">-</button></td>
+			<td><h3 *ngIf="name" class="top">{{name}}</h3></td>
+			<ng-content></ng-content>
+		</div>
+		<div [style.display]="isOpen ? 'none' : 'block'">
+			<td><p *ngIf="!name" class="top">Show Details</p></td>
+			<td><button type="button" class="top" (click)="expand($event);">+</button></td>
+			<td><h3 *ngIf="name" class="top">{{name}}</h3></td>
+		</div>
+	</tr>
+</table>

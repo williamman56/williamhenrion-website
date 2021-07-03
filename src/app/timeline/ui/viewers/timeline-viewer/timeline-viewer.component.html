@@ -1,0 +1,17 @@
+<div *ngIf="timeline" class="timeline-viewer">
+	<svg [style.width]="getWidth()">
+		<rect *ngFor="let arc of timeline.arcs; index as i"
+			[attr.x]="arc.start*scale"
+			[attr.y]="i*25"
+			[attr.width]="(arc.end-arc.start)*scale"
+			height=20
+			(click)="onClickEvent(arc)"/>
+		<text *ngFor="let arc of timeline.arcs; index as i"
+			[attr.x]="arc.start*scale + 25"
+			[attr.y]="i*25+15"
+			style="fill:white"
+			(click)="onClickEvent(arc)">
+			{{arc.name}}
+		</text>
+	</svg>
+</div>

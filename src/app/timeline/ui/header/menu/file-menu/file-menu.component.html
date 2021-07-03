@@ -1,0 +1,4 @@
+<input hidden type="file" #uploader [value]="''" (change)="openFile($event)" accept=".json"/>
+<button class="menu-item" (click)="newFile()">New</button>
+<button class="menu-item" (click)="uploader.click()">Open File</button>
+<button class="menu-item" (click)="downloadFile()">Download</button>

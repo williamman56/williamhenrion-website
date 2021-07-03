@@ -1,0 +1,74 @@
+<div class="main-window">
+	<div class="view-window"
+			[style.zIndex]="selectionMode == getEventType() && selectToAdd ? '10' : '0'">
+		<app-event-viewer
+			(editEvent)="clickComponent($event, getEventType())"
+			(editArc)="clickComponent($event, getArcType())">
+		</app-event-viewer>
+	</div>
+	<div class="edit-window">
+		<div class="editor" 
+				[style.zIndex]="selectionMode && !selectToAdd ? '10' : '0'">
+			<div *ngIf="timeline" class="edit-form">
+				<div class="tab-selector">
+					<div *ngFor="let f of openForms" class="form-tab">
+						<button class="form-button" (click)="bringToFront(f)">{{getName(f)}}</button> 
+					</div>
+				</div>
+				<div class="edit-pane">
+					<div *ngFor="let f of openForms" [ngClass]="getClass(f)">
+						<!--<app-event-form [editingEvent]="getEvent(f)"></app-event-form>-->
+						<div [ngSwitch]="f.type" style="height: 100%">
+							<div *ngSwitchCase="getEventType()" [style.display]="formIsActive(f) ? 'block' : 'none'">
+								<app-event-form
+										[editingEvent]="getEvent(f.index)"
+										(closeEvent)="closeTab($event, getEventType())"
+										(deleteEvent)="deleteTab($event, getEventType())"
+										(editCharacter)="clickComponent($event, getCharacterType())"
+										(selectCharAdd)="waitForSelectChar($event, true);"
+										(selectCharRemove)="waitForSelectChar($event, false)">
+								</app-event-form>
+							</div>
+							<div *ngSwitchCase="getCharacterType()" [style.display]="formIsActive(f) ? 'block' : 'none'">
+								<app-character-form
+										[editingCharacter]="getCharacter(f.index)"
+										[timeline]="this.timeline"
+										(closeCharacter)="closeTab($event, getCharacterType())"
+										(deleteCharacter)="deleteTab($event, getCharacterType())"
+										(editEvent)="clickComponent($event, getEventType())"
+										(selectEventAdd)="waitForSelectEvent($event, true);"
+										(selectEventRemove)="waitForSelectEvent($event, false)">
+								</app-character-form>
+							</div>
+							<div *ngSwitchCase="getArcType()" style="height: 100%" [style.display]="formIsActive(f) ? 'block' : 'none'">
+								<app-arc-form
+										[editingArc]="getArc(f.index)"
+										(closeArc)="closeTab($event, getArcType())"
+										(deleteArc)="deleteTab($event, getArcType())"
+										(editEvent)="clickComponent($event, getEventType())"
+										(editCharacter)="clickComponent($event, getCharacterType())"
+										(selectEventAdd)="waitForSelectEvent($event, true);"
+										(selectCharAdd)="waitForSelectChar($event, true);"
+										(selectEventRemove)="waitForSelectEvent($event, false)"
+										(selectCharRemove)="waitForSelectChar($event, false)">
+								</app-arc-form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div> 
+		<div class="timeline">
+			<app-timeline-viewer (editArc)="clickComponent($event, getArcType())"></app-timeline-viewer>
+		</div>
+	</div>
+	<div class="view-window right" 
+			[style.zIndex]="selectionMode == getCharacterType() && selectToAdd ? '10' : '0'">
+		<app-character-viewer 
+			(editCharacter)="clickComponent($event, getCharacterType())"
+			(editArc)="clickComponent($event, getArcType())"
+			>
+		</app-character-viewer>
+	</div>
+	<div class="dark-tint" [style.display]="selectionMode ? 'block' : 'none'" (click)="stopSelectionMode()"></div>
+</div>

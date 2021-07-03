@@ -1,0 +1,17 @@
+.list-item {
+	margin: 40px 0px;
+}
+
+.list {
+	padding: 0px 20px;
+}
+
+.read-order {
+	margin-top: 15px;
+	display: flex;
+	justify-content: center;
+}
+
+.read-order a {
+	color: red;
+}

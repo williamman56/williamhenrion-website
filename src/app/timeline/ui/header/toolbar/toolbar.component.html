@@ -1,0 +1,112 @@
+<div class="toolbar">
+
+	<div class="toolbar-item">
+		<input hidden type="file" #uploader [value]="''" (change)="openFile($event)" accept=".json"/>
+		<button title="New Timeline" (click)="newFile()">
+			<fa-icon [icon]="faPlusCircle"></fa-icon>
+		</button>
+	</div>
+	
+	<div class="toolbar-item">
+		<button (click)="uploader.click()">
+			<fa-icon [icon]="faFolderOpen"></fa-icon>
+		</button>
+	</div>
+	
+	<div class="toolbar-item">
+		<button (click)="downloadFile()">
+			<fa-icon [icon]="faSave"></fa-icon>
+		</button>
+	</div>
+	
+	<div class="separator"><div></div></div>
+
+	<div class="toolbar-item">
+		<button title="Create Arc" (click)="createArc()">
+			<fa-icon [icon]="faCalendarWeek"></fa-icon>
+		</button>
+	</div>
+	
+	<div class="toolbar-item">
+		<button title="Create Event" (click)="createEvent()">
+			<fa-icon [icon]="faCalendarDay"></fa-icon>
+		</button>
+	</div>
+	
+	<div class="toolbar-item">
+		<button title="Create Character" (click)="createCharacter()">
+			<fa-icon [icon]="faUserTag"></fa-icon>
+		</button>
+	</div>
+	
+	<div class="separator"><div></div></div>
+	
+	<div class="toolbar-item">
+		<button title="Update Arcs From Events" (click)="addToArcs()">
+			<fa-icon [icon]="faPeopleArrows"></fa-icon>
+		</button>
+	</div>
+</div>
+
+<button class="toggle-button" (click)="toggleMenu($event)">
+	<fa-icon *ngIf="!open" class="fa-2x" [icon]="faChevronRight"></fa-icon>
+	<fa-icon *ngIf="open" class="fa-2x" [icon]="faChevronDown"></fa-icon>
+</button>
+
+<div class="mobile-toolbar" *ngIf="open"	>
+
+	<div class="mobile-toolbar-item">
+		<button title="New Timeline" (click)="newFile()">
+			<fa-icon class="fa-2x" [icon]="faPlusCircle"></fa-icon>
+		</button>
+	</div>
+	
+	<div class="mobile-toolbar-item">
+		<button (click)="uploader.click()">
+			<fa-icon class="fa-2x" [icon]="faFolderOpen"></fa-icon>
+		</button>
+	</div>
+	
+	<div class="mobile-toolbar-item">
+		<button (click)="downloadFile()">
+			<fa-icon class="fa-2x" [icon]="faSave"></fa-icon>
+		</button>
+	</div>
+	
+	<div class="mobile-separator"><div></div></div>
+
+	<div class="mobile-toolbar-item">
+		<button title="Create Arc" (click)="createArc()">
+			<fa-icon class="fa-2x" [icon]="faCalendarWeek"></fa-icon>
+		</button>
+	</div>
+	
+	<div class="mobile-toolbar-item">
+		<button title="Create Event" (click)="createEvent()">
+			<fa-icon class="fa-2x" [icon]="faCalendarDay"></fa-icon>
+		</button>
+	</div>
+	
+	<div class="mobile-toolbar-item">
+		<button title="Create Character" (click)="createCharacter()">
+			<fa-icon class="fa-2x" [icon]="faUserTag"></fa-icon>
+		</button>
+	</div>
+	
+	<div class="mobile-separator"><div></div></div>
+	
+	<div class="mobile-toolbar-item">
+		<button title="Update Arcs From Events" (click)="addToArcs()">
+			<fa-icon class="fa-2x" [icon]="faPeopleArrows"></fa-icon>
+		</button>
+	</div>
+</div>
+
+<div class="demo-button">
+	<button (click)="showDemo()" *ngIf="!inDemoMode()">
+		Demo!
+	</button>
+	<button (click)="getComplete()" *ngIf="inDemoMode()">
+		I used my tool to write this
+	</button>
+</div>

@@ -1,0 +1,21 @@
+h4, p {
+	margin: 0px 3px;
+}
+
+.attribute-form {
+	border: 1px solid black;
+}
+
+.row {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.col {
+	flex: 1;
+}
+
+.flex-button {
+	height:100%;
+	width:100%;
+}

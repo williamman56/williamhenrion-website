@@ -1,0 +1,11 @@
+<div class="gallery">
+	<div class="gallery-content">
+		<div *ngFor="let s of sources">
+			<img [src]="s" />
+		</div>
+	</div>
+	<div class="button-controls">
+		<button *ngIf="prev" (click)="prevChapter()" class="prev">Prev</button>
+		<button *ngIf="next" (click)="nextChapter()" class="next">Next</button>
+	</div>
+</div>

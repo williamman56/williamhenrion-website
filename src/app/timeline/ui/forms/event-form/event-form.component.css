@@ -1,0 +1,30 @@
+h4, p {
+	margin: 0px 3px;
+}
+
+.footer {
+	position: relative;
+	bottom: 0px;
+}
+
+.left {
+	float: left;
+}
+
+.right {
+	float: right;
+}
+
+.row {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.col {
+	flex: 1;
+}
+
+.flex-button {
+	height:100%;
+	width:100%;
+}

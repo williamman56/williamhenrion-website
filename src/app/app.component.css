@@ -1,0 +1,65 @@
+body, html {
+	margin: 0px;
+	height: 100%;
+}
+
+.header-links, .mobile-header-links {
+	background: linear-gradient(to bottom, #B6D1B8, #A0C4A2);
+	position: relative;
+	z-index: 1;
+	height: 48px;
+}
+
+.header-link {
+	border: none;
+	background: none;
+	padding: 16px 32px;
+	font-size: 16px;
+	text-align: center;
+	font-family: "Lucida Console", "Courier New", monospace;
+}
+
+.header-link:hover {
+	background-color: #74ad77;
+}
+
+.sidebar {
+	background-color: rgba(0, 0, 0, .2);
+	width: 50%;
+	height: 100vh;
+	position: absolute;
+	top: 0;
+	z-index: 20;
+}
+
+.mobile-header-links {
+	display: none;
+}
+
+.mobile-header-links button, .mobile-header-link {
+	border: none;
+	background: none;
+}
+
+.mobile-header-link {
+	font-size: 20px;
+	width: 100%;
+	padding: 20px 10px;
+	color: white;
+	text-shadow: 0px 4px 3px rgba(0,0,0,0.4),
+             0px 8px 13px rgba(0,0,0,0.1),
+             0px 18px 23px rgba(0,0,0,0.1);
+}
+
+.mobile-header-link:hover {
+	background-color: rgba(0, 0, 0, .3);
+}
+
+@media screen and (max-width: 400px) {
+	.mobile-header-links {
+		display: block;
+	}
+	.header-links {
+		display: none;
+	}
+}

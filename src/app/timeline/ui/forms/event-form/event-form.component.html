@@ -1,0 +1,62 @@
+<h2>{{editingEvent.name}}</h2>
+
+<div>
+	<form (ngSubmit)="closeForm()">
+		<div *ngIf="editing" class="form-box">
+			<h4 style="display:inline-block">Name:</h4>
+			<input type="text" placeholder="Event Name" class="event-name-edit"
+							name="eventName" [(ngModel)]="editingEvent.name">
+		</div>
+		
+		<div class="form-box">
+			<h4 *ngIf="editing">Description:</h4>
+			<p *ngIf="!editing">{{editingEvent.description}}</p>
+			<textarea *ngIf="editing" type="text" placeholder="Description"
+								class="desc-edit" name="eventDesc"
+								[(ngModel)]="editingEvent.description"></textarea>
+		</div>
+		
+		<div class="form-box">
+			<div>
+				<h4 style="display:inline-block">Event Number:</h4>
+				<p *ngIf="!editing" style="display:inline-block">{{editingEvent.occurrence}}</p>
+				<input *ngIf="editing" type="number" placeholder="Event Number"
+								class="event-num-edit" name="eventNum"
+								[(ngModel)]="editingEvent.occurrence">
+			</div>
+			
+			<div>
+				<h4 style="display:inline-block">Point in Time:</h4>
+				<p *ngIf="!editing" style="display:inline-block">{{editingEvent.time}}</p>
+				<input *ngIf="editing" type="number" placeholder="Event Time"
+								class="event-time-edit" name="eventTime"
+								[(ngModel)]="editingEvent.time">
+			</div>
+		</div>
+		
+		<div class="form-box">
+			<h4>Characters in Arc:</h4>
+			<div class="row">
+				<div class="col" *ngFor="let char of editingEvent.characters">
+					<app-character [character]="getCharacter(char)" (edit)="onClickCharacter($event)"></app-character>
+			</div>
+				<div class="col" *ngIf="editing">
+					<button class="form-button flex-button" type="button" (click)="addCharacter()">Add Character</button>
+				</div>
+				<div class="col" *ngIf="editing">
+					<button class="form-button flex-button" type="button" (click)="removeCharacter()">Remove Character</button>
+				</div>
+			</div>
+		</div>
+		
+		<div class="form-box">
+			<button type="button" (click)="closeForm()" class="form-button footer left">Close</button>
+			<button type="button" (click)="toggleEditing()" class="form-button footer right">
+				{{editing ? 'Save' : 'Edit'}}
+			</button>
+			<button *ngIf="editing" type="button" (click)="deleteEntry()" class="form-button footer right">
+				Delete
+			</button>
+		</div>
+	</form>
+</div>

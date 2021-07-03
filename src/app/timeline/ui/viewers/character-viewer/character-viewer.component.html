@@ -1,0 +1,18 @@
+<div *ngIf="timeline" class="character-viewer">
+	<!--<button (click)="addCharacter()" style="width:100%"><h3>Add Character</h3></button>-->
+	<h3>Characters</h3>
+	<app-collapsible *ngFor="let arc of timeline.arcs"
+			[name]="arc.name"
+			class="view-list"
+			(click)="openArc(arc)"
+		>
+		<app-character *ngFor="let char of arc.characters"
+			[character]="timeline.getCharacter(char)"
+			(edit)="onClickEvent($event)"></app-character>
+	</app-collapsible>
+	<app-character *ngFor="let char of timeline.getArclessCharacters()"
+		[character]="char"
+		(edit)="onClickEvent($event)"
+		>
+	</app-character>
+</div>

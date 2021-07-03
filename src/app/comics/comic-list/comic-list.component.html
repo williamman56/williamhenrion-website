@@ -1,0 +1,15 @@
+<div class="list">
+	<div class="read-order">
+		<a
+				href="/assets/comics/manga-read-order.jpg"
+				target="_blank" rel="noopener noreferrer">
+			Japanese Manga is read from right to left!
+		</a>
+	</div>
+	<div *ngFor="let comic of comicList" class="list-item">
+		<app-comic-list-item
+			[comic]="comic"
+			[link]="'/comics/' + comic.selector"
+		></app-comic-list-item>
+	</div>
+</div>

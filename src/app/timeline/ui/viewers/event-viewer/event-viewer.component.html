@@ -1,0 +1,19 @@
+<div *ngIf="timeline" class="event-viewer">
+	<!--<button (click)="addEvent()" style="width:100%"><h3>Add Event</h3></button>-->
+	<h3>Events</h3>
+	<app-collapsible *ngFor="let arc of timeline.arcs"
+			[name]="arc.name"
+			class="view-list"
+			(click)="openArc(arc)"
+		>
+		<div class="viewer-item">
+			<app-event *ngFor="let event of arc.events"
+				[storyEvent]="timeline.getEvent(event)"
+				(edit)="onClickEvent($event)"></app-event>
+		</div>
+	</app-collapsible>
+	<app-event *ngFor="let event of timeline.getArclessEvents()"
+		[storyEvent]="event"
+		(edit)="onClickEvent($event)"
+	></app-event>
+</div>

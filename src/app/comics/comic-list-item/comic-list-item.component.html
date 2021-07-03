@@ -1,0 +1,18 @@
+<div class="container">
+	<a [href]="link">
+		<div class="thumbnail-container">
+			<div class="img-back"></div>
+			<img class="img-2" [src]="'/assets/comics/' + comic.selector + '/chapter-1/1-2.jpg'" />
+			<img class="img-1" [src]="'/assets/comics/' + comic.selector + '/chapter-1/1-1.jpg'" />
+		</div>
+	</a>
+	<div class="comic-name">
+		<h3><a [href]="link" style="color:inherit">{{comic.name}}</a></h3>
+	</div>
+	<div class="author-name">
+		<h4>{{comic.author}}</h4>
+	</div>
+	<div class="details">
+		<p class="description">{{comic.descriptionShort}}</p>
+	</div>
+</div>

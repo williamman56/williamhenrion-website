@@ -1,0 +1,66 @@
+* {
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+html, body, .timeline-root {
+	height: 100%;
+}
+
+.timeline-root {
+	background-color: grey;
+}
+
+.main-window {
+	height: 100%;
+	padding-top: 125px;
+	margin-top: -125px;
+	box-sizing: border-box;
+}
+
+body {
+	margin: 0px;
+	overflow: hidden;
+}
+
+.col > app-event > button {
+	height: 100%;
+}
+.col > app-character > button {
+	height: 100%;
+}
+
+.view-list > .collapsible {
+	border: 1px solid black;
+}
+
+.desc-edit {
+	height: 20vh;
+	width: 40vw;
+}
+
+.form-box {
+	margin: 15px 0px;
+}
+
+.form-button {
+	border: none;
+	color: white;
+	background-color: #384045;
+	padding: 10px 10px;
+	border-radius: 4px;
+	box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+.form-button:hover {
+	background-color: #181c1f;
+}
+
+@media screen and (max-width: 600px) {
+	/*This media rule matches one in editor.component*/
+	.timeline-root {
+		height: auto;
+	}
+	body {
+		overflow: auto;
+	}
+}

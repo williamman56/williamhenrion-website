@@ -1,0 +1,74 @@
+<h2>{{editingArc.name}}</h2>
+
+<div>
+	<form (ngSubmit)="closeForm()">
+		<div *ngIf="editing" class="form-box">
+			<h4 style="display:inline-block">Name:</h4>
+			<input type="text" placeholder="Arc Name" class="arc-name-edit"
+							name="arcName" [(ngModel)]="editingArc.name">
+		</div>
+		
+		<div class="form-box">
+			<h4 *ngIf="editing">Description:</h4>
+			<p *ngIf="!editing">{{editingArc.description}}</p>
+			<textarea *ngIf="editing" type="text" placeholder="Description"
+								class="desc-edit" name="arcDesc"
+								[(ngModel)]="editingArc.description"></textarea>
+		</div>
+		
+		<div class="form-box">
+			<div>
+				<h4 style="display:inline-block">Opening Event:</h4>
+				<p *ngIf="!editing" style="display:inline-block">{{editingArc.start}}</p>
+				<input *ngIf="editing" type="number" placeholder="First Event"
+								class="arc-start-edit" name="arcStart"
+								[(ngModel)]="editingArc.start">
+			</div>
+			
+			<div>
+				<h4 style="display:inline-block">Closing Event:</h4>
+				<p *ngIf="!editing" style="display:inline-block">{{editingArc.end}}</p>
+				<input *ngIf="editing" type="number" placeholder="Last Event"
+								class="arc-end-edit" name="arcEnd"
+								[(ngModel)]="editingArc.end">
+			</div>
+		</div>
+		
+		<app-collapsible [name]="'Events in Arc:'" class="form-box">
+			<div class="row">
+				<div class="col" *ngFor="let event of editingArc.events">
+					<app-event [storyEvent]="getEvent(event)" (edit)="onClickEvent($event)"></app-event>
+				</div>
+				<div class="col" *ngIf="editing">
+					<button class="form-button flex-button" type="button" (click)="addEvent()">Add Event</button>
+				</div>
+				<div class="col" *ngIf="editing">
+					<button class="form-button flex-button" type="button" (click)="removeEvent()">Remove Event</button>
+				</div>
+			</div>
+		</app-collapsible>
+		
+		<app-collapsible [name]="'Characters in Arc:'" class="form-box">
+			<div class="row">
+				<div class="col" *ngFor="let char of editingArc.characters">
+					<app-character [character]="getCharacter(char)" (edit)="onClickCharacter($event)"></app-character>
+			</div>
+				<div class="col" *ngIf="editing">
+					<button class="form-button flex-button" type="button" (click)="addCharacter()">Add Character</button>
+				</div>
+				<div class="col" *ngIf="editing">
+					<button class="flex-button form-button" type="button" (click)="removeCharacter()">Remove Character</button>
+				</div>
+			</div>
+		</app-collapsible>
+		<div class="form-box">
+			<button type="button" (click)="closeForm()" class="form-button footer left">Close</button>
+			<button type="button" (click)="toggleEditing()" class="form-button footer right">
+				{{editing ? 'Save' : 'Edit'}}
+			</button>
+			<button *ngIf="editing" type="button" (click)="deleteEntry()" class="form-button footer right">
+				Delete
+			</button>
+		</div>
+	</form>
+</div>

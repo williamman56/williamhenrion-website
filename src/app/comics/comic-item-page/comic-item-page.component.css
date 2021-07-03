@@ -1,0 +1,86 @@
+.content {
+	display: flex;
+	padding: 15px 15px;
+}
+
+h3, h4, p {
+	margin: 0;
+}
+
+img {
+	flex: 1;
+	flex-grow: 0;
+	max-height: 500px;
+	padding: 0px 5px;
+	object-fit: contain;
+}
+
+.content-text {
+	flex: 1;
+	border-radius: 6px;
+	width: 100%;
+	position: relative;
+	margin: 0;
+	border-radius: 4px;
+	background-color: #fafafa;
+	border: 1px solid #cc99cc;
+}
+
+.large-pane {
+	display: flex;
+	padding: 20px 15px;
+}
+
+.info-pane {	
+	flex: 1;
+}
+
+.chapter-info {
+	flex: 1;
+}
+
+.description, .chapter-list {
+	font: normal 16px Arial,Helvetica,sans-serif;
+}
+
+.citation {
+	font: normal 14px Arial,Helvetica,sans-serif;
+	position: absolute;
+	bottom: 20px;
+	right: 20px;
+}
+
+.name, .author {
+	font: bold 18px Arial,Helvetica,sans-serif;
+	padding: 20px 15px;
+}
+
+.name {
+	background-color: #cc99cc;
+	font-size: 22px;
+	white-space: nowrap;
+	color: white;
+	text-decoration: none;
+	text-shadow: -1px -1px 0 #663366, 1px -1px 0 #663366, -1px 1px 0 #663366, 1px 1px 0 #663366, 0 -2px 0 #663366, 0 2px 0 #663366, -2px 0 0 #663366, 2px 0 0 #663366;
+}
+
+.author {
+	color: #663366;
+	background-color: #ffccff;
+}
+
+.chapters {
+	list-style: none;
+}
+
+.japanese {
+	color: #dacccc;
+	font-size: .95em;
+	text-shadow: -1px -1px 0 #663366, 1px -1px 0 #663366, -1px 1px 0 #663366, 1px 1px 0 #663366, 0 -1px 0 #663366, 0 1px 0 #663366, -1px 0 0 #663366, 1px 0 0 #663366;
+}
+
+@media screen and (max-width: 550px) {
+	.content {
+		flex-direction: column;
+	}
+}

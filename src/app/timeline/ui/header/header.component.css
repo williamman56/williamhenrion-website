@@ -1,0 +1,73 @@
+.header {
+	margin-bottom: 15px;
+	padding-left: 30px;
+	height: 60px;
+	background: linear-gradient(to bottom, #A0C4A2, 
+																					#a0c4b1 15%,
+																					#a0b6c4);
+	box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
+
+.toolbar {
+	display: inline-block;
+	height: 100%;
+}
+
+.menu-content {
+	display: block;
+	position: absolute;
+	background-color: #f1f1f1;
+	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);	
+	z-index: 1;
+}
+
+.menu-item {
+	display: block;
+	width: 100%;
+	border: none;
+	padding: 15px 25px;
+}
+
+.menu-button {
+	background-color: #e8e8ee;
+	border: none;
+	padding: 8px 8px;
+	margin: 10px 5px;
+	font-size: 15px;
+}
+
+.menu-button:hover {background-color: #f1f1f1;}
+
+.menu-item:hover {background-color: #ddd;}
+
+.menu-content {
+	margin-top: -10px;
+	margin-left: 5px;
+}
+
+.toolbar-item {
+	padding: 4px 4px;
+	margin: 10px 5px;
+	height: 35px;
+	width: 35px;
+	display: inline-block;
+}
+
+.toolbar-item > button {
+	height: 100%;
+	width: 100%;
+}
+
+.separator {
+	height: 35px;
+	padding: 10px 10px;
+	display: inline;
+	
+}
+
+.separator > div {
+	display: inline;
+	position: relative;
+	height: 100%;
+	border-left: 1px solid #384539;
+}

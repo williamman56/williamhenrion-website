@@ -1,0 +1,4 @@
+<button class="menu-button" (click)="toggleOpen($event)">{{name}}</button>
+<div *ngIf="menuOpen" class="menu-content">
+	<ng-content></ng-content>
+</div>
