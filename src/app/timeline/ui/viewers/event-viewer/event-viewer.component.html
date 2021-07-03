@@ -7,7 +7,7 @@
 			(click)="openArc(arc)"
 		>
 		<div class="viewer-item">
-			<app-event *ngFor="let event of arc.events"
+			<app-event *ngFor="let event of getSortedEvents(arc.index)"
 				[storyEvent]="timeline.getEvent(event)"
 				(edit)="onClickEvent($event)"></app-event>
 		</div>

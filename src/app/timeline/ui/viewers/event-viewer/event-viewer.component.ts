@@ -26,6 +26,26 @@ export class EventViewerComponent implements OnInit {
 		});
   }
 	
+	getSortedEvents(index: number): Array<number> {
+		if (this.timeline) 
+			return this.timeline.arcs[index].events.sort((a: number, b: number) => {
+				let e1 = this.timeline?.getEvent(a);
+				let e2 = this.timeline?.getEvent(b);
+				if (e1 && e2) {
+					if (e1.occurrence < e2.occurrence)
+						return -1;
+					else if (e1.occurrence > e2.occurrence)
+						return 1;
+					else if (e1.index < e2.index)
+						return -1;
+					else
+						return 1;
+				}
+				return 0;
+			});
+		return [];
+	}
+	
 	onClickEvent(e: Event) {
 		this.editEvent.emit(e);
 	}
