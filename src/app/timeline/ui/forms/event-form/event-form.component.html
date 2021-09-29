@@ -10,7 +10,7 @@
 		
 		<div class="form-box">
 			<h4 *ngIf="editing">Description:</h4>
-			<p *ngIf="!editing">{{editingEvent.description}}</p>
+			<p class="text-box" *ngIf="!editing">{{editingEvent.description}}</p>
 			<textarea *ngIf="editing" type="text" placeholder="Description"
 								class="desc-edit" name="eventDesc"
 								[(ngModel)]="editingEvent.description"></textarea>
